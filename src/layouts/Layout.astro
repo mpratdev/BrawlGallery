@@ -1,5 +1,6 @@
 ---
 import NavBar from "../components/NavBar.astro"
+import Footer from "../components/Footer.astro"
 
 interface Props {
 	title: string;
@@ -14,24 +15,37 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="height=device-height" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
-		<NavBar />
-		<slot />
+		<div class="background">
+			<NavBar />
+			<section class="content">
+				<slot />
+			</section>
+			<Footer />
+		</div>
 	</body>
 </html>
 <style is:global>
 	html {
 		font-family: "Nougat", system-ui, sans-serif;
-		background: #222;
 	}
 
 	body {
 		margin: 0;
 		padding: 0;
+		background: radial-gradient(#AAEEB0, #32B6B0);
+		background-repeat: no-repeat;
+	}
+
+	.content {
+		width: 900px;
+		margin: auto;
+    	
 	}
 	
 	@font-face {
@@ -40,5 +54,21 @@ const { title } = Astro.props;
 		font-weight: normal;
 		font-style: normal;
 		font-display: swap;
+	}
+
+	.background {
+		height:100%;
+		background:url(https://github.com/raharisonAina/BrawlStars/blob/main/assets/bg-pattern-on-green.png?raw=true);
+		background-repeat: repeat;
+		animation: animate 15s linear infinite;
+	}
+
+	@keyframes animate{
+		from {
+			background-position: 0 0;
+		}
+		to {
+			background-position: 0 -128px;
+		} 
 	}
 </style>
