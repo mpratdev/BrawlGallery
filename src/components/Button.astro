@@ -1,0 +1,106 @@
+---
+interface Props {
+    text: string;
+    href?: string;
+    color?: string;
+    onclick?: string;
+}
+
+const { text, href, color, onclick } = Astro.props;
+---
+
+<a href={href} class={color}>
+    <button class="button" id={onclick}>
+        {text}
+    </button>
+</a>
+
+<style>
+    .button {
+        cursor: pointer;
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-family: "Nougat", sans-serif;
+        font-size: 35px;
+        color: white;
+        background: linear-gradient(180deg, #343c50 63%, #38545f 100%);
+        transition: 0.4s;
+        box-shadow: 0px 4px 0 #00000047;
+        transform: skewX(-9deg);
+        text-transform: uppercase;
+        margin-bottom: 24px;
+        border-radius: 5px;
+        border: 1px solid #050E25;
+        padding: 10px 10px;
+    }
+
+    .button::before {
+        content: "";
+        position:absolute;
+        left:0;
+        right:0;
+        bottom:0;
+        top:0;
+        z-index:200;
+        background-color: #5A5371;
+        height:3px;  
+    }
+
+    .button::after{
+        content: "";
+        position:absolute;
+        left:0;
+        right:0;
+        bottom:0;
+        z-index:200;
+        background-color: #252C3C;
+        height:3px;  
+    }
+
+    .button:active {
+        transform: scale(0.9) skewX(-9deg);
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .mail button {
+        background: linear-gradient(180deg, #5a8ebf 63%, #4b6b9e 100%);
+    }
+
+    .mail button::after {
+        background: #3a5a82;
+    }
+
+    .mail button::before {
+        background: #4975a2;
+    }
+
+    #yes {
+        background: #EFC802;
+        font-size: 25px;
+    }
+
+    #yes::after {
+        background: #BF6826;
+    }
+
+    #yes::before {
+        background: #FFEE43;
+    }
+</style>
+
+<script>
+    const $button = document.querySelector("#yes")
+
+    $button?.addEventListener("click", () => {
+        const notification = document.querySelector(".screen");
+        if (notification instanceof HTMLElement) {
+            notification.style.display = "none";
+        }
+    })
+</script>
