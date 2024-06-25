@@ -1,11 +1,95 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro'
+import Notification from '../components/Notification.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<h1>BRAWL STARS</h1>
+<Layout title="Brawl Gallery">
+	<Notification from="Developer" text="Hi! This page is currently unfinished, but don't worry, we're working hard on it. You can anyway access to the page. Enjoy!" time="Right now" />
+	<main>
+		<section class="welcome">
+			<h1>
+				<p style="margin-bottom: -100px; font-size: 60px;">BRAWL</p>
+				<p>GALLERY</p>
+			</h1>
+		</section>
+		
+		<section class="explanation">
+			<p>
+				Hi there! You may be asking what is this web page, so here you have the answer. Our objective is to build a place where you can see all brawlers from brawl stars data. You can see the skins of each character, their gadgets, habilities, stellars and more.
+			</p>
+
+			<p>
+				If you want to support, you can follow me <a href="https://github.com/mpratdev">here</a>. Don't worry, it's completely FREE and it would help me a lot to reach more people!
+			</p>
+
+			<p>
+				Thank you for your time and hope you enjoy this project!
+			</p>
+		</section>
+
+		<section class="buttons">
+			<Button text='GALLERY' href="/gallery" />
+			<Button text='SUPPORT' href="/support" />
+		</section>
+
+		<section class="explanation" style="margin-top: 25px;">
+			<p>
+				If you keep reading, let me explain you who am I. My name is Martí and I'm a programer who does lots of diferent projects.
+			</p>
+
+			<p>
+				Although I have some experience on this, I know I always can improve my projects, so please, if you have any recomendation or suposition, I would really appreciate if you write me an e-mail and tell me whatever you want. You can do it by clicking on the next button:
+			</p>
+		</section>
+
+		<section class="buttons mail">
+			<Button text='mpratmaya@gmail.com' href="mailto:mpratmaya@gmail.com" color="mail"/>
+		</section>
+	</main>
 </Layout>
 
 <style>
-	
+	main {
+		height: 1060px;
+	}
+
+	h1 p {
+        font-size: 80px;
+        text-shadow: 10px 10px 0px black;
+        color: red;
+    }
+
+    h1 {
+        margin: auto;
+    }
+
+	main {
+		width: 100%;
+		text-align: center;
+	}
+
+	.explanation {
+		margin-top: -40px;
+	}
+
+	.explanation p {
+		color: #fff;
+		font-size: 21px;
+	}
+
+	.explanation a {
+		color: #f00;
+	}
+
+	.buttons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 55px;
+	}
+
+	.mail {
+		margin-top: 15px;
+	}
 </style>
