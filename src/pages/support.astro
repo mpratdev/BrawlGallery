@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro'
+---
+
+<Layout title="Support">
+	<main>
+		<section class="welcome">
+			<h1>
+				<p>SUPPORT</p>
+			</h1>
+		</section>
+		
+		<section class="explanation">
+			<p>
+				Hi there! You may be asking what is this web page, so here you have the answer. Our objective is to build a place where you can see all brawlers from brawl stars data. You can see the skins of each character, their gadgets, habilities, stellars and more.
+			</p>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	main {
+		height: 1060px;
+	}
+
+	h1 p {
+        font-size: 80px;
+        text-shadow: 10px 10px 0px black;
+        color: red;
+    }
+
+    h1 {
+        margin: auto;
+    }
+
+	main {
+		width: 100%;
+		text-align: center;
+	}
+
+	.explanation {
+		margin-top: -40px;
+	}
+
+	.explanation p {
+		color: #fff;
+		font-size: 21px;
+	}
+
+	.explanation a {
+		color: #f00;
+	}
+
+	.buttons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 55px;
+	}
+
+	.mail {
+		margin-top: 15px;
+	}
+</style>
