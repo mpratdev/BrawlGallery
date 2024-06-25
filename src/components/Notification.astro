@@ -1,0 +1,79 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+    from: string;
+    text: string;
+    time: string;
+}
+
+const { from, text, time } = Astro.props
+---
+
+<div class="screen">
+    <div class="notification">
+        <section class="left">
+            <p id="from">{from}</p>
+            <p class="text">{text}</p>
+        </section>
+        <section class="right">
+            <p id="time">{time}</p>
+            <Button text='OKEY' onclick="yes"/>
+        </section>
+        <div id="new">NEW</div>
+    </div>
+</div>
+
+<style>
+    .notification {
+        display: flex;
+        width: 550px;
+        background: #258EF6;
+        margin: auto;
+        margin-top: 150px;
+        border: 2px solid #003691;
+        border-bottom: 5px solid #003691;
+        padding: 10px 20px;
+    }
+
+    .left, .right {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .screen {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000d;
+        left: 0;
+        top: 69px;
+        z-index: 1000;
+    }
+
+    #from {
+        color: #A2D2E8;
+        text-shadow: 2px 2px 0px #000;
+        margin-bottom: 0px;
+    }
+
+    #time {
+        color: #00177E;
+    }
+
+    .text {
+        width: 90%;
+        color: #fff;
+        text-shadow: 2px 2px 0px #000;
+        font-size: 18px;
+        text-wrap: pretty;
+    }
+
+    #new {
+        position: absolute;
+        top: 142px;
+        padding: 5px 10px;
+        background: #202254;
+        color: #F1C516;
+    }
+</style>
