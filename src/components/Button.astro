@@ -95,12 +95,21 @@ const { text, href, color, onclick } = Astro.props;
 </style>
 
 <script>
-    const $button = document.querySelector("#yes")
+    const $button = document.querySelector("#yes");
+    const $notification = document.querySelector(".screen");
+    
+    const notificationAccepted = localStorage.getItem("notificationAccepted");
 
-    $button?.addEventListener("click", () => {
-        const notification = document.querySelector(".screen");
-        if (notification instanceof HTMLElement) {
-            notification.style.display = "none";
+    if (!notificationAccepted) {
+        if ($notification instanceof HTMLElement) {
+            $notification.style.display = "block";
         }
-    })
+
+        $button?.addEventListener("click", () => {
+            if ($notification instanceof HTMLElement) {
+                $notification.style.display = "none";
+            };
+            localStorage.setItem("notificationAccepted", "true");
+        });
+    }
 </script>
