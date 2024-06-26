@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { brawlers } from "../info/brawlers"
+
+export async function getStaticPaths() {
+    return brawlers.map(({ brawler, image }) => {
+        return {
+        params: { brawler },
+        props: { image },
+        };
+    });
+}
+
+const { brawler } = Astro.params;
+const { image } =
+    Astro.props;
+---
+
+<Layout title={brawler}>
+    <h1>{brawler}</h1>
+    <img src={image} />
+</Layout>
