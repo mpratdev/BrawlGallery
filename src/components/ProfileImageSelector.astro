@@ -1,0 +1,62 @@
+---
+import { brawlers } from "../info/brawlers"
+
+---
+
+<div class="all-images">
+    <h2>SELECT YOUR FAVOURITE BRAWLER</h2>
+    {
+        brawlers.map(( { image }) => {
+            const Image = image
+    
+            return (
+                <button class="brawler-image" data-image={Image}>
+                    <img src={Image} />
+                </button>
+            )
+        })
+    }
+</div>
+
+<style>
+    .all-images {
+        width: 80%;
+        margin: auto;
+        margin-top: 60px;
+        text-align: center;
+        background: #258EF6;
+        border: 2px solid #003691;
+        border-bottom: 5px solid #003691;
+        padding: 10px 20px;
+    }
+
+    .all-images h2 {
+        color: #F1C516;
+        text-shadow: 2px 2px 0px #ff7700;
+        font-size: 1.85rem;
+        margin-bottom: 20px;
+    }
+
+    .brawler-image img {
+        width: 60px;
+        margin-top: 8px;
+    }
+
+    .brawler-image {
+        background: none;
+        border: none;
+    }
+</style>
+
+<script>
+    const $profileImagePicture = document.getElementById("profile-picture")
+
+    document.querySelectorAll(".brawler-image")?.forEach(button => {
+        button.addEventListener("click", () => {
+            const toChange = button.getAttribute('data-image');
+            if ($profileImagePicture instanceof HTMLImageElement) {
+                $profileImagePicture.src = toChange
+            }
+        })}
+    )
+</script>
