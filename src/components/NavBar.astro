@@ -1,3 +1,9 @@
+---
+import react from "@astrojs/react"
+import ProfileImageSelector from "../components/ProfileImageSelector.astro"
+import Button from "./Button.astro"
+---
+
 <nav>
     <a href="/" style="text-decoration: none;">
         <div id="logo">
@@ -12,10 +18,19 @@
         <a href="/support" class="nav-anchor">SUPPORT</a>
     </div>
 
-    <div id="profile">
-        <img src="/images/Edgar.png">
-    </div>
+    <button id="profile-image-button">
+        <div id="profile">
+            <img id="profile-picture" src="/images/brawlers/Edgar.webp" alt="Favourite Brawler">
+        </div>
+    </button>
+    
 </nav>
+
+<div class="select-profile-pic">
+    <ProfileImageSelector />
+    
+    <Button text="GO BACK" goback="goback"/>
+</div>
 
 <style>
     nav {
@@ -56,4 +71,30 @@
         margin-right: 15px;
         color: red;
     }
+
+    #profile-image-button {
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    .select-profile-pic {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000d;
+        z-index: 1000;
+        display: none;
+    }
 </style>
+
+<script>
+    const $profileImageButton = document.getElementById("profile-image-button")
+    const $selectProfileScreen = document.querySelector(".select-profile-pic")
+
+    $profileImageButton?.addEventListener("click", () => {
+        if ($selectProfileScreen instanceof HTMLElement) {
+            $selectProfileScreen.style.display = "block";
+        }
+    })
+</script>
