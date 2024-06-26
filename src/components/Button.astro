@@ -4,12 +4,13 @@ interface Props {
     href?: string;
     color?: string;
     onclick?: string;
+    goback?: string;
 }
 
-const { text, href, color, onclick } = Astro.props;
+const { text, href, color, onclick, goback } = Astro.props;
 ---
 
-<a href={href} class={color}>
+<a href={href} class=`${color} ${goback}`>
     <button class="button" id={onclick}>
         {text}
     </button>
@@ -92,14 +93,24 @@ const { text, href, color, onclick } = Astro.props;
     #yes::before {
         background: #FFEE43;
     }
+
+    .goback button {
+        margin: auto;
+        margin-top: 30px;
+    }
 </style>
 
 <script>
+    // notification button
     const $button = document.querySelector("#yes");
     const $notification = document.querySelector(".screen");
-    
     const notificationAccepted = localStorage.getItem("notificationAccepted");
 
+    // brawler image go back button
+    const $gobackButton = document.querySelector(".goback")
+    const $selectFavBrawl = document.querySelector(".select-profile-pic")
+
+    // notification button
     if (!notificationAccepted) {
         if ($notification instanceof HTMLElement) {
             $notification.style.display = "block";
@@ -112,4 +123,11 @@ const { text, href, color, onclick } = Astro.props;
             localStorage.setItem("notificationAccepted", "true");
         });
     }
+
+    // notification button
+    $gobackButton?.addEventListener("click", () => {
+        if ($selectFavBrawl instanceof HTMLElement) {
+            $selectFavBrawl.style.display = "none";
+        }
+    });
 </script>
